@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:hsl(216, 12%, 8%);
+}
+.outer_container{
+    font-family: Overpass,sans-serif;
+    height: auto;
+    margin-inline: auto;
+    border-radius: 10px;
+    width: 70%;
+    background-color: hsl(213, 19%, 18%);
+}
+.word_cont{
+    width: 90%;
+    margin-bottom: 1rem;
+}
+p,h2{
+    margin-left: 2rem;
+}
+h2{
+    margin-bottom: 0.5rem;
+    color: white;
+}
+p{
+    color: hsl(216, 12%, 54%);
+}
+.img_cont{
+    
+    background-color: hsla(215, 8%, 31%, 0.324);
+    width: 3.5px; 
+    height: 3.5px; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:2rem;
+    margin-bottom:1.5rem; 
+    margin-top:1.5rem;
+    padding: 1.5rem;
+}
+
+.btn_cont{
+    display: flex;
+    justify-content: space-evenly;
+}
+.buttons{
+    background-color:  hsla(210, 1%, 34%, 0.562);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+    border-radius: 50%;
+    color: hsl(217, 17%, 91%);
+}
+#btn_submit {
+    background-color: aqua;
+    width: 80%; 
+    margin: 20px auto; 
+    text-align: center;
+    border-radius: 20px; 
+    padding: 10px; 
+    background-color: orange;
+}
+#btn_submit a{
+    text-decoration: none;
+    font-family: 400;
+    color: white;    
+}
+#btn_submit:hover{
+    background-color: white;
+    cursor: grabbing;
+}
+a:hover{
+    background-color: orange;
+}
+.buttons:hover{
+    background-color: orange;
+    cursor:grabbing;
+}
+.buttons:active{
+    background-color: lightgrey;
+    color:white
+}
+
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="outer_container">
+        <div class="img_cont">
+            <img src="interactive-rating-component-main/images/icon-star.svg" alt="icon_star">
+        </div>
+        <div class="word_cont">
+            <h2>How did we do ?</h2>
+            <p>Please let us know how we did with your support request.All feedback is appreciated to help us improve our offering!</p>
+        </div>
+
+        <div class="btn_cont">
+            <div class="buttons" >1</div>
+            <div class="buttons">2</div>
+            <div class="buttons">3</div>
+            <div class="buttons">4</div>
+            <div class="buttons">5</div>
+        </div>
+        <div id="btn_submit">
+            <a href="thank_you.html">SUBMIT</a>
+        </div>
+    </div>
+</body>
+<script>
+    
+    const btns = document.querySelectorAll('.buttons');
+    let selectedRating = null;
+
+    btns.forEach(btn => {
+        btn.addEventListener("click", event => {
+            selectedRating = event.target.innerHTML;
+            // Update UI to reflect selected rating if needed
+        });
+    });
+
+    // Add event listener to the submit button
+    document.getElementById('btn_submit').addEventListener("click", () => {
+        if (selectedRating) {
+            const url = `thank_you.html?rating=${selectedRating}`;
+            window.location.href = url;
+        } else {
+            alert("Please select a rating before submitting.");
+        }
+    });
+
+
+
+</script>
+</html>
